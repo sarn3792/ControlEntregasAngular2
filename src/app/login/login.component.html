@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="col-sm-12">
+		<div class="text-center">
+			<img src="../assets/images/UN.jpg">
+			<h2>Control de Entregas</h2>
+		</div>
+		<br>
+		<br>
+		<div class="jumbotron">
+			<div class="alert alert-danger" role="alert" *ngIf="loginError"> Usuario y/o contraseña incorrectos 
+			</div>
+			<form name="form" (ngSubmit) = " f.form.valid && LogIn()" #f="ngForm" novalidate>
+				<div class="text-center">
+					<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !txtEmail.valid }">
+						<label for="txtEmail">Email</label>
+						<input class="form-control txtSmall" type="text" id="txtEmail" name="txtEmail" placeholder="email@email.com" [(ngModel)]="user.email" #txtEmail="ngModel" required>
+						<div *ngIf="f.submitted && !txtEmail.valid" class="help-block">Email es requerido</div>
+					</div>
+					<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !txtPassword.valid }"> 
+						<label for="txtPassword">Contraseña</label>
+						<input class="form-control txtSmall" type="password" id="txtPassword" name="txtPassword" placeholder="Micontraseña123" [(ngModel)]="user.password" #txtPassword="ngModel" required>
+						<div *ngIf="f.submitted && !txtPassword.valid" class="help-block">Contraseña es requerida</div>
+					</div>
+					<br>
+					<div class="form-group">
+						<button [disabled]="loading" type="submit" class="btn btn-primary top-buffer">Ingresar</button> <br>
+						<br>
+						<img *ngIf="loading" src="../assets/images/loading.gif">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
