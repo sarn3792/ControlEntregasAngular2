@@ -7,7 +7,7 @@
 		<br>
 		<br>
 		<div class="jumbotron">
-			<div class="alert alert-danger" role="alert" *ngIf="loginError"> Usuario y/o contraseña incorrectos 
+			<div class="alert alert-danger" role="alert" *ngIf="loginError"> {{errorMessage}}
 			</div>
 			<form name="form" (ngSubmit) = " f.form.valid && LogIn()" #f="ngForm" novalidate>
 				<div class="text-center">

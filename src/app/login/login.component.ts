@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 	private user : Login;
   loading = false;
   loginError = false;
+  errorMessage = "";
 
   constructor(private loginService : LoginService) { 
   	this.user = new Login();
@@ -32,7 +33,13 @@ export class LoginComponent implements OnInit {
   			console.log('correcto');
   		})
   		.catch(response =>{
-  			console.log('error');
+  			console.log(response);
+        if(response.status == 400){
+           this.errorMessage = "Usuario y/o contraseña incorrectos";
+        }  
+        else{
+           this.errorMessage = "Ha ocurrido un error al consultar los datos";
+        }
         this.loginError = true;
         this.loading = false;
   		});
